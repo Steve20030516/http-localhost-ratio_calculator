@@ -1,0 +1,42 @@
+<!-- calculate.php -->
+<?php
+$servername = "localhost";
+$username = "ratio_user";
+$password = "password";
+$dbname = "ratio_calculator";
+
+// Create a new database connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Get the user input from the form
+$winCount = $_POST['winCount'];
+$loseCount = $_POST['loseCount'];
+$killCount = $_POST['killCount'];
+$deathCount = $_POST['deathCount'];
+
+// Store the user data in the database
+$sql = "INSERT INTO user_data (win_count, lose_count, kill_count, death_count) VALUES ($winCount, $loseCount, $killCount, $deathCount)";
+if ($conn->query($sql) === TRUE) {
+  echo "User data stored successfully.";
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+// Calculate the ratios
+$winRatio = $winCount / ($winCount + $loseCount);
+$killDeathRatio = $killCount / $deathCount;
+
+// Display the calculated ratios
+echo "<h2>Results:</h2>";
+echo "<p>Win Ratio: " . round($winRatio, 2) . "</p>";
+echo "<p>Kill-Death Ratio: " . round($killDeathRatio, 2) . "</p>";
+
+// Close the database connection
+$conn->close();
+?>^x
+^X
