@@ -1,0 +1,25 @@
+<!-- index.php -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ratio Calculator</title>
+</head>
+<body>
+  <h1>Ratio Calculator</h1>
+  <form action="calculate.php" method="POST">
+    <label for="winCount">Wins:</label>
+    <input type="number" id="winCount" name="winCount" required>
+    <br>
+    <label for="loseCount">Losses:</label>
+    <input type="number" id="loseCount" name="loseCount" required>
+    <br>
+    <label for="killCount">Kills:</label>
+    <input type="number" id="killCount" name="killCount" required>
+    <br>
+    <label for="deathCount">Deaths:</label>
+    <input type="number" id="deathCount" name="deathCount" required>
+    <br>
+    <button type="submit">Calculate Ratios</button>
+  </form>
+</body>
+</html>
